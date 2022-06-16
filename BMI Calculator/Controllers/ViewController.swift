@@ -10,11 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func heightChangeEvent(_ sender: UISlider!) {
+        print(sender.value);
+        heightLabel.text = String(sender!.value) + "m";
+    }
 
 }
 
