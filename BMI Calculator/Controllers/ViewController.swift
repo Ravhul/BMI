@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     
+    @IBOutlet weak var heightSlideValue: UISlider!
+    @IBOutlet weak var weightSlideValue: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +22,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func heightChangeEvent(_ sender: UISlider!) {
-        print(sender.value);
-        heightLabel.text = String(sender!.value) + "m";
+        heightLabel.text = String(format:"%.2f",sender.value) + "M";
     }
-
+    
+    
+    @IBAction func weightChangeEvent(_ sender: UISlider) {
+        weightLabel.text = String(format:"%.2f",sender.value) + "KG";
+    }
+    
+    @IBAction func calculateBMI(_ sender: UIButton) {
+        let ht = Float(String(format:"%0.2f",heightSlideValue.value)) ?? 1;
+        let wt = Float(String(format:"%0.0f",weightSlideValue.value)) ?? 1;
+        
+        let bmi = wt / pow(ht,2);
+        print(bmi);
+    }
 }
 
